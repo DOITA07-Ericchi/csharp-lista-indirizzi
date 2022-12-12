@@ -24,11 +24,10 @@ try
 
 
 		for (int i = 0; i < infoIndirizzo.Length; i++)
+		{
+			if (infoIndirizzo[i] == "")
 			{
-				if (infoIndirizzo[i] == "")
-				{
-					Console.WriteLine("Qualche campo è vuoto.");
-				}
+				Console.WriteLine("Attenzione: Il campo " + i + " è vuoto.");
 			}
 		}
 
@@ -37,6 +36,10 @@ try
 		Console.WriteLine(riga);
 	}
 
+}
+catch (IndexOutOfRangeException e)
+{
+	Console.WriteLine("Formatta meglio quel CSV e riprova. Qualche campo va oltre i limiti. (" + e.Message + ")");
 }
 catch (Exception e)
 {
