@@ -4,6 +4,7 @@ using ListaIndirizzi;
 Console.WriteLine("Hello, World!");
 
 List<Indirizzo> listaIndirizzi = new List<Indirizzo>();
+bool corretto = true;
 
 try
 {
@@ -27,6 +28,7 @@ try
 		{
 			if (infoIndirizzo[i] == "")
 			{
+				corretto = false;
 				Console.WriteLine("Attenzione: Il campo " + i + " è vuoto.");
 			}
 		}
@@ -34,6 +36,10 @@ try
 		Indirizzo indirizzoEstratto = new Indirizzo(name, surname, street, city, province, zip);
 		listaIndirizzi.Add(indirizzoEstratto);
 		Console.WriteLine(riga);
+	}
+	if (corretto == false)
+	{
+		throw new Exception("Il file CSV ha qualche problema. Risolvi dove c'è scritto \"Attenzione\".");
 	}
 
 }
