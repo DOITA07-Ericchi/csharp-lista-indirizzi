@@ -7,7 +7,7 @@ List<Indirizzo> listaIndirizzi = new List<Indirizzo>();
 
 try
 {
-	StreamReader file = File.OpenText("Files/addresses.csv");
+	StreamReader file = File.OpenText("../../../Files/addresses.csv");
 
 	while (!file.EndOfStream)
 	{
@@ -23,9 +23,18 @@ try
 		string zip = infoIndirizzo[5];
 
 
+		for (int i = 0; i < infoIndirizzo.Length; i++)
+			{
+				if (infoIndirizzo[i] == "")
+				{
+					Console.WriteLine("Qualche campo è vuoto.");
+				}
+			}
+		}
+
 		Indirizzo indirizzoEstratto = new Indirizzo(name, surname, street, city, province, zip);
 		listaIndirizzi.Add(indirizzoEstratto);
-		// Console.WriteLine(riga);
+		Console.WriteLine(riga);
 	}
 
 }
@@ -33,3 +42,5 @@ catch (Exception e)
 {
 	Console.WriteLine(e.Message);
 }
+
+Console.ReadLine();
